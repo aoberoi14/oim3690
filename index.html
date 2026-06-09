@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adityavardhan Oberoi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f0e8;
+      --ink: #1a1410;
+      --rust: #b5451b;
+      --gold: #c9a84c;
+      --muted: #7a6f62;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.4;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      padding: 4rem 6rem 3rem;
+      border-bottom: 1px solid rgba(26,20,16,0.15);
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .name {
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .name em {
+      font-style: italic;
+      color: var(--rust);
+    }
+
+    .tagline {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    nav {
+      display: flex;
+      gap: 2.5rem;
+      padding: 1.2rem 6rem;
+      border-bottom: 1px solid rgba(26,20,16,0.08);
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+
+    nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--rust); }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 180px);
+    }
+
+    #about {
+      padding: 5rem 5rem 5rem 6rem;
+      border-right: 1px solid rgba(26,20,16,0.12);
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+      max-width: 40px;
+    }
+
+    #about p {
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+      font-weight: 300;
+      color: var(--ink);
+      max-width: 44ch;
+      margin-bottom: 1.4rem;
+    }
+
+    #about p strong { font-weight: 600; }
+
+    .detail-row {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(26,20,16,0.1);
+    }
+
+    .detail { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .detail-key {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .detail-val { font-size: 0.95rem; color: var(--ink); }
+
+    #interests {
+      padding: 5rem 5rem 5rem 5rem;
+      animation: fadeUp 0.9s 0.35s ease both;
+    }
+
+    .interest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .interest-card {
+      padding: 1.6rem 1.4rem;
+      border: 1px solid rgba(26,20,16,0.12);
+      position: relative;
+      transition: border-color 0.25s, transform 0.25s;
+      cursor: default;
+    }
+
+    .interest-card:hover {
+      border-color: var(--rust);
+      transform: translateY(-3px);
+    }
+
+    .interest-card::before {
+      content: attr(data-num);
+      position: absolute;
+      top: 1rem;
+      right: 1.1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+    }
+
+    .interest-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .interest-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
+
+    footer {
+      padding: 1.8rem 6rem;
+      border-top: 1px solid rgba(26,20,16,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: fadeUp 0.9s 0.5s ease both;
+    }
+
+    footer span, footer a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--rust); text-decoration: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 800px) {
+      header, nav, #about, footer { padding-left: 2rem; padding-right: 2rem; }
+      main { grid-template-columns: 1fr; }
+      #about { border-right: none; border-bottom: 1px solid rgba(26,20,16,0.12); padding: 3rem 2rem; }
+      #interests { padding: 3rem 2rem; }
+      .interest-grid { grid-template-columns: 1fr; }
+      header { grid-template-columns: 1fr; gap: 1rem; }
+      .tagline { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="name">Adityavardhan<br><em>Oberoi</em></h1>
+    <div class="tagline">
+      Babson College &mdash; Class of 2027<br>
+      Business Administration<br>
+      Entrepreneurship
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#interests">Interests</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <div class="section-label">About</div>
+      <p>
+        I'm a junior at <strong>Babson College</strong> studying Business Administration
+        with a concentration in Entrepreneurship. I grew up around the advertising industry
+        through my family's agency, <strong>Oberoi IBC</strong>, which shoots campaigns internationally.
+      </p>
+      <p>
+        I've led teams, worked on sustainability ventures, and spent years in commercial acting and
+        film production. I'm drawn to the intersection of strategy, storytelling, and building things
+        that actually matter.
+      </p>
+
+      <div class="detail-row">
+        <div class="detail">
+          <span class="detail-key">Currently</span>
+          <span class="detail-val">Babson College, Junior</span>
+        </div>
+        <div class="detail">
+          <span class="detail-key">Based in</span>
+          <span class="detail-val">Boston, MA</span>
+        </div>
+        <div class="detail">
+          <span class="detail-key">Background</span>
+          <span class="detail-val">Mumbai, India</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="interests">
+      <div class="section-label">Interests</div>
+      <div class="interest-grid">
+
+        <div class="interest-card" data-num="01">
+          <div class="interest-title">Entrepreneurship</div>
+          <div class="interest-desc">Building ventures from zero, understanding markets, and leading teams through uncertainty.</div>
+        </div>
+
+        <div class="interest-card" data-num="02">
+          <div class="interest-title">Advertising & Film</div>
+          <div class="interest-desc">Grew up on film sets and in studios. Storytelling through visuals is a second language.</div>
+        </div>
+
+        <div class="interest-card" data-num="03">
+          <div class="interest-title">Global Business</div>
+          <div class="interest-desc">International operations, cross-cultural negotiation, and the IPE of emerging markets.</div>
+        </div>
+
+        <div class="interest-card" data-num="04">
+          <div class="interest-title">Sustainability</div>
+          <div class="interest-desc">Led EcoKeeper, a 12-person team focused on environmentally responsible innovation.</div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Adityavardhan Oberoi &copy; 2026</span>
+    <a href="mailto:oberoi@babson.edu">Get in touch</a>
+  </footer>
+
+</body>
+</html>
