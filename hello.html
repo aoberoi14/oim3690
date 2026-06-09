@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hello</title>
+    <style>
+        :root {
+            --bg: #f0f4fa;
+            --surface: rgba(255, 255, 255, 0.88);
+            --text: #111827;
+            --accent: #2563eb;
+            --accent-soft: #dbeafe;
+            --shadow: 0 24px 80px rgba(10, 18, 40, 0.14);
+            --soft-shadow: 0 10px 30px rgba(10, 18, 40, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at top, #f8faff 0%, var(--bg) 55%, #d1ddf5 100%);
+            color: var(--text);
+            font-family: Inter, system-ui, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        header,
+        main,
+        footer {
+            width: min(840px, 100%);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.7rem 1rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            box-shadow: var(--soft-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 35px rgba(10, 18, 40, 0.18);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.75rem 1.5rem;
+            border-radius: 32px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(232, 241, 251, 0.92));
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+        }
+
+        header h1 {
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin: 0.5rem 0 0.75rem;
+            letter-spacing: -0.04em;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.05rem;
+            color: #374151;
+        }
+
+        main {
+            display: grid;
+            gap: 1.75rem;
+        }
+
+        section,
+        aside {
+            padding: 1.75rem;
+            border-radius: 28px;
+            background: var(--surface);
+            box-shadow: var(--soft-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #1e3a8a;
+        }
+
+        p,
+        li,
+        summary {
+            line-height: 1.75;
+        }
+
+        ul {
+            padding-left: 1.25rem;
+            margin: 0.85rem 0 0;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+        }
+
+        details {
+            margin-top: 1rem;
+            padding: 1rem 1rem 0.8rem;
+            background: #eff6ff;
+            border-radius: 22px;
+            box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.12);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            outline: none;
+        }
+
+        figure {
+            margin: 1.25rem 0 0;
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 24px;
+            display: block;
+            box-shadow: 0 30px 70px rgba(10, 18, 40, 0.18);
+        }
+
+        figcaption {
+            margin-top: 0.85rem;
+            font-size: 0.95rem;
+            color: #6b7280;
+        }
+
+        aside {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-radius: 26px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 1.5rem;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: var(--soft-shadow);
+        }
+
+        address {
+            font-style: normal;
+            color: #374151;
+            margin-top: 0.75rem;
+        }
+
+        a {
+            color: var(--accent);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#welcome">Home</a></li>
+                <li><a href="#interests">Interests</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+        <h1>Hey, I'm Adityavardhan</h1>
+        <p><mark>Entrepreneurship student</mark> with a passion for business, film, and AI.</p>
+    </header>
+
+    <main>
+        <section id="welcome">
+            <h2>Welcome</h2>
+            <p>This is my first hand-written HTML page. I am learning how to structure content with <em>semantic</em> tags.</p>
+        </section>
+
+        <section id="interests">
+            <h2>My Interests</h2>
+            <article>
+                <p>Here are a few things I care about:</p>
+                <ul>
+                    <li>Entrepreneurship and venture building</li>
+                    <li>Film production and commercial acting</li>
+                    <li>AI and how it is changing business</li>
+                    <li>Sustainability and impact-driven ventures</li>
+                </ul>
+            </article>
+
+            <details>
+                <summary>Why these interests?</summary>
+                <p>Growing up around my family's advertising agency in Mumbai gave me an early lens into how creativity, strategy, and storytelling intersect — and I have been chasing that overlap ever since.</p>
+            </details>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <article>
+                <p>Currently a junior at Babson College, class of <time datetime="2026">2026</time>, concentrating in Entrepreneurship. I grew up in Mumbai and come from a family business background in advertising.</p>
+                <figure>
+                    <img src="images/photo.png" alt="Adityavardhan Oberoi at Babson">
+                    <figcaption>At Babson College.</figcaption>
+                </figure>
+            </article>
+        </section>
+
+        <aside>
+            <p><strong>Fun fact:</strong> This page uses semantic HTML tags like <code>&lt;details&gt;</code>, <code>&lt;figure&gt;</code>, and <code>&lt;time&gt;</code> — all written by hand.</p>
+        </aside>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <details>
+                <summary>See my contact info</summary>
+                <p>Email: <a href="mailto:aoberoi1@babson.edu">aoberoi1@babson.edu</a></p>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Adityavardhan Oberoi</p>
+        <address>Contact me at <a href="mailto:aoberoi1@babson.edu">aoberoi1@babson.edu</a></address>
+    </footer>
+</body>
+
+</html>
