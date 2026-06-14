@@ -1,0 +1,108 @@
+/* styles.css — written by hand for OIM3690 */
+
+/* Element selector */
+body {
+    font-family: Inter, system-ui, sans-serif;
+    background-color: #f5f4f2;
+    color: #1f1912;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-top: 0;
+}
+
+header {
+    background-color: #1f1912;
+    color: #f5f4f2;
+    padding: 1.5rem 2rem;
+}
+
+nav a {
+    color: #f5f4f2;
+    text-decoration: none;
+    margin-right: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.9rem;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid #ddd;
+    color: #6b5d52;
+    font-size: 0.9rem;
+}
+
+img {
+    border-radius: 12px;
+    max-width: 100%;
+}
+
+ul {
+    padding-left: 1.25rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* ID selector */
+#about {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5d4c4;
+}
+
+#contact {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e5d4c4;
+}
+
+/* Class selector */
+.highlight {
+    background-color: #f2d6c5;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.card {
+    background-color: #fff;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid #e5d4c4;
+    margin-bottom: 1rem;
+}
+
+/* Hover pseudo-class */
+nav a:hover {
+    color: #c85d39;
+}
+
+a:hover {
+    color: #c85d39;
+}
