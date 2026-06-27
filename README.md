@@ -17,7 +17,9 @@ Live at [aoberoi14.github.io](https://aoberoi14.github.io) — [repo](https://gi
 A marketing site for my family's advertising agency based in Mumbai.
 Live at [aoberoi14.github.io/oberoi-ibc-site](https://aoberoi14.github.io/oberoi-ibc-site/) — [repo](https://github.com/aoberoi14/oberoi-ibc-site)
 
-**MP2 — Interactive Web Tool** *(coming soon)*
+## Mini Project 2
+ 
+[run_tracker](https://github.com/aoberoi14/run_tracker) — interactive running log and goal tracker | [Live site](https://aoberoi14.github.io/run_tracker)
 
 **MP3 — API-Powered App** *(coming soon)*
 
