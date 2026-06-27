@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 460px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      background: #f4f4f4;
+      color: #1a1a1a;
+    }
+    h1 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+    p { color: #555; margin-bottom: 1.5rem; }
+    .field {
+      margin-bottom: 1.25rem;
+    }
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.35rem;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: white;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .checkbox-row input { width: 18px; height: 18px; }
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      background: #0070f3;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .receipt {
+      margin-top: 1.5rem;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.25rem;
+      display: none;
+    }
+    .receipt.visible { display: block; }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.35rem 0;
+      font-size: 0.95rem;
+    }
+    .receipt-row.total {
+      font-weight: 700;
+      border-top: 1px solid #eee;
+      margin-top: 0.5rem;
+      padding-top: 0.75rem;
+      font-size: 1.05rem;
+    }
+    .savings {
+      color: green;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+    .error {
+      color: red;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Checkout</h1>
+  <p>Enter your order total and we will apply any discounts.</p>
+
+  <div class="field">
+    <label for="totalInput">Order total ($)</label>
+    <input type="number" id="totalInput" placeholder="e.g. 85" min="0" step="0.01">
+  </div>
+
+  <div class="checkbox-row">
+    <input type="checkbox" id="memberCheck">
+    <label for="memberCheck" style="margin:0; font-weight:400;">I am a member (extra 10% off)</label>
+  </div>
+
+  <button id="calcBtn">Calculate</button>
+  <p class="error" id="errorMsg"></p>
+
+  <div class="receipt" id="receipt">
+    <div class="receipt-row">
+      <span>Subtotal</span>
+      <span id="subtotalDisplay"></span>
+    </div>
+    <div class="receipt-row">
+      <span>Discount</span>
+      <span id="discountDisplay"></span>
+    </div>
+    <div class="receipt-row total">
+      <span>Total</span>
+      <span id="totalDisplay"></span>
+    </div>
+    <p class="savings" id="savingsDisplay"></p>
+  </div>
+
+  <script>
+    // Written by hand: getDiscount(total, isMember)
+    function getDiscount(total, isMember) {
+      let discount = 0;
+
+      if (total >= 100) {
+        discount = 0.15;
+      } else if (total >= 50) {
+        discount = 0.10;
+      } else {
+        discount = 0;
+      }
+
+      if (isMember) {
+        discount = discount + 0.10;
+      }
+
+      return discount;
+    }
+
+    // AI-enhanced checkout logic below
+    document.getElementById('calcBtn').addEventListener('click', function() {
+      const totalInput = Number(document.getElementById('totalInput').value);
+      const isMember = document.getElementById('memberCheck').checked;
+      const errorMsg = document.getElementById('errorMsg');
+      const receipt = document.getElementById('receipt');
+
+      if (!totalInput || totalInput <= 0) {
+        errorMsg.textContent = 'Please enter a valid order total.';
+        receipt.classList.remove('visible');
+        return;
+      }
+
+      errorMsg.textContent = '';
+
+      const discountRate = getDiscount(totalInput, isMember);
+      const discountAmount = totalInput * discountRate;
+      const finalTotal = totalInput - discountAmount;
+
+      document.getElementById('subtotalDisplay').textContent = '$' + totalInput.toFixed(2);
+      document.getElementById('discountDisplay').textContent = discountRate > 0
+        ? '-$' + discountAmount.toFixed(2) + ' (' + Math.round(discountRate * 100) + '% off)'
+        : '$0.00';
+      document.getElementById('totalDisplay').textContent = '$' + finalTotal.toFixed(2);
+      document.getElementById('savingsDisplay').textContent = discountAmount > 0
+        ? 'You saved $' + discountAmount.toFixed(2) + '!'
+        : '';
+
+      receipt.classList.add('visible');
+    });
+  </script>
+
+</body>
+</html>
