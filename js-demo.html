@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Demo</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      background: #f9f9f9;
+      color: #1a1a1a;
+    }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.1rem; margin-top: 2rem; color: #444; }
+    pre {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+    .output {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-top: 0.5rem;
+      font-family: monospace;
+      min-height: 1.5rem;
+    }
+    button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #0070f3;
+      color: white;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Demo</h1>
+  <p>A read-the-code walkthrough of core JavaScript concepts.</p>
+
+  <!-- 1. Variables -->
+  <h2>1. Variables: var, let, const</h2>
+  <pre>
+let name = "Adi";
+const year = 2026;
+var score = 100;
+
+console.log(name, year, score);
+  </pre>
+  <button onclick="demo1()">Run</button>
+  <div class="output" id="out1"></div>
+
+  <!-- 2. Functions -->
+  <h2>2. Functions</h2>
+  <pre>
+function greet(name) {
+  return "Hello, " + name + "!";
+}
+
+const greetArrow = (name) => "Hello, " + name + "!";
+
+console.log(greet("Adi"));
+console.log(greetArrow("Babson"));
+  </pre>
+  <button onclick="demo2()">Run</button>
+  <div class="output" id="out2"></div>
+
+  <!-- 3. Arrays -->
+  <h2>3. Arrays</h2>
+  <pre>
+let fruits = ["apple", "banana", "mango"];
+fruits.push("grape");
+console.log(fruits);
+console.log("Length:", fruits.length);
+console.log("First:", fruits[0]);
+  </pre>
+  <button onclick="demo3()">Run</button>
+  <div class="output" id="out3"></div>
+
+  <!-- 4. Objects -->
+  <h2>4. Objects</h2>
+  <pre>
+let person = {
+  name: "Adi",
+  age: 20,
+  school: "Babson"
+};
+
+console.log(person.name);
+console.log(person["school"]);
+person.major = "Entrepreneurship";
+console.log(person);
+  </pre>
+  <button onclick="demo4()">Run</button>
+  <div class="output" id="out4"></div>
+
+  <!-- 5. Conditionals -->
+  <h2>5. Conditionals</h2>
+  <pre>
+let temperature = 75;
+
+if (temperature > 80) {
+  console.log("Hot day");
+} else if (temperature > 60) {
+  console.log("Nice day");
+} else {
+  console.log("Cold day");
+}
+  </pre>
+  <button onclick="demo5()">Run</button>
+  <div class="output" id="out5"></div>
+
+  <!-- 6. Loops -->
+  <h2>6. Loops</h2>
+  <pre>
+let numbers = [1, 2, 3, 4, 5];
+
+numbers.forEach(function(n) {
+  console.log(n * 2);
+});
+  </pre>
+  <button onclick="demo6()">Run</button>
+  <div class="output" id="out6"></div>
+
+  <!-- 7. DOM Manipulation -->
+  <h2>7. DOM Manipulation</h2>
+  <pre>
+let el = document.getElementById("demo-box");
+el.textContent = "Updated by JavaScript!";
+el.style.color = "green";
+  </pre>
+  <button onclick="demo7()">Run</button>
+  <div class="output" id="out7">
+    <span id="demo-box">Original text</span>
+  </div>
+
+  <!-- 8. Events -->
+  <h2>8. Events</h2>
+  <pre>
+button.addEventListener("click", function() {
+  console.log("Button was clicked!");
+});
+  </pre>
+  <button id="event-btn" onclick="demo8()">Click me</button>
+  <div class="output" id="out8">Click count: 0</div>
+
+  <script>
+    function show(id, value) {
+      document.getElementById(id).textContent = value;
+    }
+
+    function demo1() {
+      let name = "Adi";
+      const year = 2026;
+      var score = 100;
+      show("out1", name + ", " + year + ", " + score);
+    }
+
+    function demo2() {
+      function greet(name) { return "Hello, " + name + "!"; }
+      const greetArrow = (name) => "Hello, " + name + "!";
+      show("out2", greet("Adi") + "\n" + greetArrow("Babson"));
+    }
+
+    function demo3() {
+      let fruits = ["apple", "banana", "mango"];
+      fruits.push("grape");
+      show("out3", JSON.stringify(fruits) + "\nLength: " + fruits.length + "\nFirst: " + fruits[0]);
+    }
+
+    function demo4() {
+      let person = { name: "Adi", age: 20, school: "Babson" };
+      person.major = "Entrepreneurship";
+      show("out4", JSON.stringify(person, null, 2));
+    }
+
+    function demo5() {
+      let temperature = 75;
+      let result = temperature > 80 ? "Hot day" : temperature > 60 ? "Nice day" : "Cold day";
+      show("out5", result);
+    }
+
+    function demo6() {
+      let numbers = [1, 2, 3, 4, 5];
+      let results = numbers.map(n => n * 2);
+      show("out6", results.join(", "));
+    }
+
+    function demo7() {
+      let el = document.getElementById("demo-box");
+      el.textContent = "Updated by JavaScript!";
+      el.style.color = "green";
+    }
+
+    let clickCount = 0;
+    function demo8() {
+      clickCount++;
+      show("out8", "Click count: " + clickCount);
+    }
+  </script>
+
+</body>
+</html>
