@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post Message — OIM3690</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="playlist.html">Playlist</a>
+    <a href="fetch-fun.html">Fetch Fun</a>
+    <a href="post-message.html">Post Message</a>
+    <a href="data-app.html">Data App</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Post a Message</h1>
+  <p>Sends a message to the class API at <code>https://oim.zhili.dev/message</code> with an <code>X-Token</code> header identifying me.</p>
+
+  <form id="messageForm">
+    <label for="messageInput">Your message</label>
+    <input type="text" id="messageInput" name="messageInput" placeholder="Say something..." required>
+    <button type="submit">Send</button>
+  </form>
+
+  <p id="status" role="status"></p>
+</main>
+
+<script>
+  // NOTE: verify this endpoint's expected body shape against the class
+  // slides from 7/1. This uses a { message: "..." } JSON body, which is
+  // the common pattern, but confirm the exact field name your professor
+  // demoed if the dashboard doesn't show the post going through.
+
+  const MY_TOKEN = "Dhvanz-Dhvanz"; // your first name, twice
+
+  async function postMessage(text) {
+    const statusEl = document.getElementById("status");
+    statusEl.textContent = "Sending...";
+
+    try {
+      const res = await fetch("https://oim.zhili.dev/message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Token": MY_TOKEN,
+        },
+        body: JSON.stringify({ message: text }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Request failed with status ${res.status}`);
+      }
+
+      statusEl.textContent = "Sent! Check the class dashboard.";
+    } catch (err) {
+      statusEl.textContent = "Something went wrong sending that message. Try again.";
+      console.error(err);
+    }
+  }
+
+  // AI-added part: wire the form up so any message can be sent,
+  // not just a hard-coded one.
+  document.getElementById("messageForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const input = document.getElementById("messageInput");
+    const text = input.value.trim();
+    if (!text) return;
+    postMessage(text);
+    input.value = "";
+  });
+</script>
+
+</body>
+</html>
