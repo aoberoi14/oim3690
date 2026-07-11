@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playlist — OIM3690</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="playlist.html">Playlist</a>
+    <a href="fetch-fun.html">Fetch Fun</a>
+    <a href="post-message.html">Post Message</a>
+    <a href="data-app.html">Data App</a>
+  </nav>
+</header>
+
+<main>
+  <h1>My Playlist</h1>
+  <p>A render-from-data exercise: one array of songs, one loop, one list item per entry.</p>
+
+  <ul id="playlistList"></ul>
+</main>
+
+<script>
+  // The data. Everything on the page is generated from this array,
+  // nothing below is hard-coded into the HTML.
+  const songs = [
+    { title: "Blinding Lights", artist: "The Weeknd", duration: "3:20" },
+    { title: "Levitating", artist: "Dua Lipa", duration: "3:23" },
+    { title: "As It Was", artist: "Harry Styles", duration: "2:47" },
+    { title: "Sunflower", artist: "Post Malone, Swae Lee", duration: "2:38" },
+    { title: "Circles", artist: "Post Malone", duration: "3:35" },
+    { title: "Watermelon Sugar", artist: "Harry Styles", duration: "2:54" },
+  ];
+
+  const listEl = document.getElementById("playlistList");
+
+  // Loop over the array once, build one <li> per song, append it.
+  for (const song of songs) {
+    const li = document.createElement("li");
+    li.textContent = `${song.title} — ${song.artist} (${song.duration})`;
+    listEl.appendChild(li);
+  }
+</script>
+
+</body>
+</html>
