@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data App — OIM3690</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="playlist.html">Playlist</a>
+    <a href="fetch-fun.html">Fetch Fun</a>
+    <a href="post-message.html">Post Message</a>
+    <a href="data-app.html">Data App</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Bookshelf</h1>
+  <p>Code-organization exercise: data lives in <code>js/data.js</code>, rendering logic lives in <code>js/main.js</code>. This page only links <code>main.js</code> as a module, which imports the data itself.</p>
+
+  <ul id="bookList"></ul>
+</main>
+
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
