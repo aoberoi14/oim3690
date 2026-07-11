@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fetch Fun — OIM3690</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  #fetchResult img {
+    max-width: 320px;
+    display: block;
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="playlist.html">Playlist</a>
+    <a href="fetch-fun.html">Fetch Fun</a>
+    <a href="post-message.html">Post Message</a>
+    <a href="data-app.html">Data App</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Fetch Fun</h1>
+  <p>Pulls a random dog photo from the <a href="https://dog.ceo/dog-api/" target="_blank" rel="noopener">Dog CEO API</a>. No key required.</p>
+
+  <button id="fetchDogBtn">Get a random dog</button>
+  <button id="surpriseBtn">Surprise me</button>
+
+  <div id="fetchResult"></div>
+</main>
+
+<script>
+  const resultEl = document.getElementById("fetchResult");
+
+  // Hand-written first: fetch one field (message, which holds the image URL)
+  // from the Dog CEO API and show it.
+  async function getRandomDog() {
+    resultEl.textContent = "Loading...";
+    try {
+      const res = await fetch("https://dog.ceo/api/breeds/image/random");
+      if (!res.ok) throw new Error("Dog API request failed");
+      const data = await res.json();
+      resultEl.innerHTML = "";
+      const img = document.createElement("img");
+      img.src = data.message;
+      img.alt = "A random dog";
+      resultEl.appendChild(img);
+    } catch (err) {
+      resultEl.textContent = "Couldn't fetch a dog right now. Try again in a moment.";
+      console.error(err);
+    }
+  }
+
+  // AI-added part: pick a random piece of advice from the Advice Slip API
+  // as the second source for the Surprise Me button.
+  async function getRandomAdvice() {
+    resultEl.textContent = "Loading...";
+    try {
+      const res = await fetch("https://api.adviceslip.com/advice");
+      if (!res.ok) throw new Error("Advice API request failed");
+      const data = await res.json();
+      resultEl.innerHTML = "";
+      const p = document.createElement("p");
+      p.textContent = `"${data.slip.advice}"`;
+      resultEl.appendChild(p);
+    } catch (err) {
+      resultEl.textContent = "Couldn't fetch advice right now. Try again in a moment.";
+      console.error(err);
+    }
+  }
+
+  document.getElementById("fetchDogBtn").addEventListener("click", getRandomDog);
+
+  document.getElementById("surpriseBtn").addEventListener("click", () => {
+    // Switch between the two APIs at random.
+    if (Math.random() < 0.5) {
+      getRandomDog();
+    } else {
+      getRandomAdvice();
+    }
+  });
+</script>
+
+</body>
+</html>
