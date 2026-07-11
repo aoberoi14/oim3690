@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chat — OIM3690</title>
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+  #chatLog {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 200px;
+    margin-bottom: 1rem;
+  }
+  .msg { margin-bottom: 0.6rem; }
+  .msg.user { font-weight: 600; }
+  .msg.ai { color: #444; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../playlist.html">Playlist</a>
+    <a href="../fetch-fun.html">Fetch Fun</a>
+    <a href="../post-message.html">Post Message</a>
+    <a href="../data-app.html">Data App</a>
+  </nav>
+</header>
+
+<main>
+  <h1>AI Chat</h1>
+  <p>A small chat page calling the OpenAI Responses API directly from the browser using the class key. This only works when <code>config.js</code> is present locally, it is never pushed to GitHub.</p>
+
+  <div id="chatLog"></div>
+
+  <form id="chatForm">
+    <label for="chatInput">Message</label>
+    <input type="text" id="chatInput" name="chatInput" placeholder="Ask something..." required>
+    <button type="submit">Send</button>
+  </form>
+</main>
+
+<!-- config.js must exist locally next to this file, it is gitignored -->
+<script src="config.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
