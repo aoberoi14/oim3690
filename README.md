@@ -1,31 +1,35 @@
-# OIM3690 — Summer 2026
+# OIM3690 — Course Work
 
-Hi, I'm Adi. This is my course repo for OIM3690 at Babson College. I'm using this to track everything I build and learn across the summer.
-
-## What's in Here
-
-- `logs/` — weekly learning logs
-- `hello.html`, `about-me.html`, `contact.html` — in-class exercises
-- `playlist.html`, `fetch-fun.html`, `post-message.html`, `data-app.html` — fetch/async/code-organization exercises
-- `ai-chat/` — LLM API exercise (config.js is gitignored, not in this repo)
-- `js/` — shared JavaScript modules (`data.js`, `main.js`)
-- `css/styles.css` — external stylesheet
+Adityavardhan (Adi) Oberoi's repo for OIM3690, AI-Powered Web Development, Summer 2026. Holds weekly logs, class exercises, and links out to each standalone project.
 
 ## Projects
 
-**Personal Website**
-Live at [aoberoi14.github.io](https://aoberoi14.github.io) — [repo](https://github.com/aoberoi14/aoberoi14.github.io)
+**Personal website**
+Site: [aoberoi14.github.io](https://aoberoi14.github.io/)
 
-**MP1 — Oberoi IBC**
-A marketing site for my family's advertising agency based in Mumbai.
-Live at [aoberoi14.github.io/oberoi-ibc-site](https://aoberoi14.github.io/oberoi-ibc-site/) — [repo](https://github.com/aoberoi14/oberoi-ibc-site)
+**MP1 — Website for someone else**
+Built a site for Oberoi IBC.
+Repo: [oberoi-ibc-site](https://github.com/aoberoi14/oberoi-ibc-site)
 
-## Mini Project 2
+**MP2 — Interactive web tool**
+A running tracker: logs runs, tracks a weekly goal, computes streaks and totals.
+Repo: [run_tracker](https://github.com/aoberoi14/run_tracker)
+Live: [aoberoi14.github.io/run_tracker](https://aoberoi14.github.io/run_tracker/)
 
-[run_tracker](https://github.com/aoberoi14/run_tracker) — interactive running log and goal tracker | [Live site](https://aoberoi14.github.io/run_tracker)
+**MP3 — API-powered app**
+A trip weather planner comparing live weather across cities using fetch and async/await.
+Repo: [trip-weather-planner](https://github.com/aoberoi14/trip-weather-planner)
+Live: [aoberoi14.github.io/trip-weather-planner](https://aoberoi14.github.io/trip-weather-planner/)
 
-## Mini Project 3
+**Final project — Reel Log**
+A personal movie tracker: search, log, rate, and see stats on your own taste, built on the TMDB API.
+Repo: [reel-log](https://github.com/aoberoi14/reel-log)
+Live: [aoberoi14.github.io/reel-log](https://aoberoi14.github.io/reel-log/)
 
-[trip-weather-planner](https://github.com/aoberoi14/trip-weather-planner) — compare live weather across cities you're considering for a trip, styled like an airport departure board | [Live site](https://aoberoi14.github.io/trip-weather-planner/)
+## Learning journey
 
-**Final Project** *(coming soon)*
+See [`learning-journey.html`](./learning-journey.html) for the arc of the semester, pulled from the logs below.
+
+## Weekly logs
+
+All ten weeks are in [`logs/`](./logs).
