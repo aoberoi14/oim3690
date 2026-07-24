@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Journey — OIM3690</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f7f4ee;
+    --card: #fffdf9;
+    --ink: #23211d;
+    --ink-soft: #55524a;
+    --ink-faint: #918d80;
+    --teal: #2f6f62;
+    --teal-wash: #e3ede9;
+    --rule: #ddd7c9;
+    --font-display: 'Source Serif 4', Georgia, serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  header.intro {
+    margin-bottom: 3.5rem;
+  }
+  header.intro .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.75rem;
+  }
+  header.intro h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.25;
+    margin: 0 0 1rem;
+  }
+  header.intro p {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  section { margin-bottom: 3.5rem; }
+  section > h2 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+  }
+  section > .sub {
+    color: var(--ink-faint);
+    font-size: 0.9rem;
+    margin: 0 0 1.5rem;
+  }
+
+  /* Week cards: plain numbered stack, no dot-line timeline */
+  .weeks {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .week-card {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .week-card:last-child { border-bottom: 1px solid var(--rule); }
+  .week-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--teal);
+    line-height: 1;
+    padding-top: 0.15rem;
+  }
+  .week-body .dates {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+  }
+  .week-body h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+  }
+  .week-body p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.6rem;
+  }
+  .ai-note {
+    font-size: 0.85rem;
+    color: var(--ink);
+    background: var(--teal-wash);
+    border-radius: 5px;
+    padding: 0.5rem 0.7rem;
+    margin-top: 0.5rem;
+  }
+  .ai-note em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--teal);
+  }
+
+  /* Repeated pattern callout */
+  .pattern {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+  }
+  .pattern p { font-size: 0.95rem; color: var(--ink-soft); margin: 0 0 0.9rem; }
+  .pattern p:last-child { margin-bottom: 0; }
+  .pattern strong { color: var(--ink); }
+
+  /* Before/after pairing, text only, no cards-with-tags styling */
+  .shift {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  @media (max-width: 600px) {
+    .shift { grid-template-columns: 1fr; }
+    .shift .arrow { display: none; }
+  }
+  .shift .side .label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+  .shift .side p {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .shift .arrow {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--teal);
+    padding-top: 1.5rem;
+  }
+
+  footer {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-faint);
+    border-top: 1px solid var(--rule);
+    padding-top: 1.25rem;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="intro">
+    <p class="kicker">OIM3690 &middot; Weeks 1&ndash;10</p>
+    <h1>Learning to hand AI a finished draft instead of a blank page</h1>
+    <p>Ten weeks of logs, read together. The pattern that shows up over and over: the weeks that went well were the ones where I built something plain and working first, then gave AI a specific job on top of it, instead of asking it to start from nothing. The weeks I learned the most were the ones where something broke live, on the deployed site, and I had to actually go find out why.</p>
+  </header>
+
+  <section>
+    <h2>The shift</h2>
+    <p class="sub">Week 1 versus week 10, same student</p>
+    <div class="shift">
+      <div class="side">
+        <p class="label">Week 1</p>
+        <p>Described myself in one sentence and asked AI for a complete personal site. Kept nearly the whole thing as-is, placeholder email included. AI was the entire process, start to finish.</p>
+      </div>
+      <div class="arrow">&rarr;</div>
+      <div class="side">
+        <p class="label">Week 10</p>
+        <p>Caught AI's first fix for a broken deploy (keep the API key gitignored) and pushed back, because I understood why that standard advice didn't apply to a static site with no backend. The real fix was mine to reason out, not AI's to hand me.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Week by week</h2>
+    <p class="sub">What got built, and where AI actually fit in</p>
+    <div class="weeks">
+
+      <div class="week-card">
+        <div class="week-num">01</div>
+        <div class="week-body">
+          <p class="dates">First week</p>
+          <h3>The whole site came from one prompt</h3>
+          <p>Built a personal portfolio site, first GitHub repo, first commit, first deploy. Learned the GitHub Desktop commit-and-push workflow and that saving a file locally isn't the same as committing it.</p>
+          <div class="ai-note"><em>AI:</em> described myself in one sentence, AI wrote the whole page, layout, styling, Google Fonts included. Kept almost all of it.</div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-num">02</div>
+        <div class="week-body">
+          <p class="dates">05/27 &ndash; 05/31</p>
+          <h3>Typed HTML by hand, then broke it on purpose</h3>
+          <p>Wrote <code>hello.html</code> with no copy-paste. Spent longer than expected on a simple image path bug (a file open in VS Code from Downloads isn't the same as a file actually inside the project folder). Deliberately removed a closing tag to see what would happen, and learned that browsers silently absorb broken HTML instead of erroring, which makes bugs harder to catch, not easier.</p>
+          <div class="ai-note"><em>AI:</em> the assignment called for typing by hand, so AI stayed a reference only, not a finished answer, this is the first week that pattern shows up.</div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-num">03</div>
+        <div class="week-body">
+          <p class="dates">06/01 &ndash; 06/03</p>
+          <h3>A real client brief, not a class exercise</h3>
+          <p>Wrote a proposal for MP1 using my family's actual agency, Oberoi IBC, as the client. Had AI interview me one question at a time to turn that proposal into a PRD, homepage priorities, contact form fields, the five-agencies section. Built the site with CSS custom properties so one variable change updates every page.</p>
+          <div class="ai-note"><em>AI:</em> answered the PRD interview honestly based on what I actually know about the agency, then used my own answers, not AI's guesses, as the build reference.</div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-num">04</div>
+        <div class="week-body">
+          <p class="dates">06/08 &ndash; 06/14</p>
+          <h3>Finished MP1, then went back to first principles</h3>
+          <p>Deployed the Oberoi IBC site. Then, separately, wrote a stylesheet by hand covering element, ID, class, and hover selectors, and built a contact form learning what <code>action</code>, <code>for</code>/<code>id</code> label pairing, and <code>required</code> actually do.</p>
+          <div class="ai-note"><em>AI:</em> asked AI for a first pass on the contact form and stylesheet, then read every rule and input type before keeping it, rather than shipping it unread.</div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-num">05</div>
+        <div class="week-body">
+          <p class="dates">06/15 &ndash; 06/21</p>
+          <h3>JavaScript starts, and so does MP2</h3>
+          <p>First real pass at variables, functions, DOM manipulation, and events. Three things that didn't click right away: when arrow functions and regular functions actually behave differently, why <code>addEventListener</code> is preferred over inline <code>onclick</code>, and why logging an object straight to the page just prints <code>[object Object]</code> without <code>JSON.stringify</code>. Picked a run tracker for MP2, since it's something I actually wanted for myself.</p>
+          <div class="ai-note"><em>AI:</em> used the PRD-interview pattern again for MP2's proposal, same process as week 3, now a repeatable habit rather than a one-off.</div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-num">06</div>
+        <div class="week-body">
+          <p class="dates">06/22 &ndash; 06/28</p>
+          <h3>Built the whole run tracker, and found three real bugs</h3>
+          <p>Wrote the discount function and half the unit converter by hand before asking AI to extend either one. Built MP2 fully: logging runs, a goal with an animated SVG progress ring, weekly/monthly totals, and a streak counter, all state living in a plain array and object with no external library. Found and fixed three of my own bugs: pace showing <code>NaN</code> on an empty submit, the streak counting a run-free current week, and history not refreshing after a delete.</p>
+          <div class="ai-note"><em>AI:</em> used AI specifically to sanity-check my streak week-boundary math after hitting repeated off-by-one errors, a targeted debugging question, not a build-it-for-me request.</div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-num">07</div>
+        <div class="week-body">
+          <p class="dates">06/29 &ndash; 07/05</p>
+          <h3>First real APIs, and a habit worth keeping</h3>
+          <p>Built a render-from-data list, a Dog CEO API fetch wrapped in <code>try</code>/<code>catch</code>, and a POST request to the class message API. Picked Open-Meteo for MP3, a trip weather comparison tool. Learned the two-call chaining pattern (geocode first, then use those coordinates to fetch weather) and started actually reading raw JSON responses in the browser before writing code against them.</p>
+          <div class="ai-note"><em>AI:</em> caught AI assuming API fields that didn't actually exist, by checking the real response first, and rewrote the MP3 proposal's "why I chose this" section since AI's first draft read more generic than my actual reason.</div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-num">08</div>
+        <div class="week-body">
+          <p class="dates">07/06 &ndash; 07/12</p>
+          <h3>Finished MP3, and the security lesson that stuck</h3>
+          <p>Deployed the trip weather planner. Learned that <code>.gitignore</code> only protects a key if it's added before the file is ever committed, adding it after the fact doesn't undo history. Learned a second, separate problem: a key loaded into a browser script is readable in DevTools regardless of git history, so real secrecy needs a server between the browser and the API, something GitHub Pages can't provide on its own.</p>
+          <div class="ai-note"><em>AI:</em> caught a live bug where AI's CSS set <code>display: flex</code> directly on two elements meant to stay hidden until needed, which silently overrode the <code>hidden</code> attribute and froze the page behind a fullscreen panel. Found it by using the deployed site, not by reading the stylesheet, then asked AI to explain the cascade issue and applied a one-line fix, in trip-weather-planner commit <code>fc20a79</code>.</div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-num">09</div>
+        <div class="week-body">
+          <p class="dates">Final project kickoff</p>
+          <h3>Reel Log gets proposed, then gets peer-reviewed</h3>
+          <p>Picked a personal movie tracker for the final project, built on the TMDB API, and wrote the proposal with an honest "what I don't know yet" section. Got real peer feedback: a classmate flagged the planned recommendation feature as more scope than I needed, and pointed out I had no way to browse a growing log. Cut the first, added sort/filter instead, before writing a line of code for either.</p>
+          <div class="ai-note"><em>AI:</em> used AI to brainstorm project directions, but made the actual scoping call, both the original pick and the post-feedback cut, myself.</div>
+        </div>
+      </div>
+
+      <div class="week-card">
+        <div class="week-num">10</div>
+        <div class="week-body">
+          <p class="dates">Building and deploying</p>
+          <h3>The same security lesson, revisited with more nuance</h3>
+          <p>Built Reel Log fully and deployed it. Search stopped working after deploy, and the fix wasn't what week 8 would have predicted: this time the API key needed to be <em>committed</em>, not gitignored, because a static site with no backend has nowhere else for the browser to read it from. Separately, found genre and decade bar charts rendering with zero height, traced it to <code>&lt;span&gt;</code> elements ignoring CSS <code>height</code> by default, and fixed it with one <code>display: block</code> rule.</p>
+          <div class="ai-note"><em>AI:</em> pushed back when AI's first instinct repeated the week-8 pattern (hide the key) in a situation where that pattern actively broke the app, the same lesson, applied with more judgment the second time.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>What actually changed</h2>
+    <p class="sub">Reading all ten side by side</p>
+    <div class="pattern">
+      <p><strong>Build the plain version first, then give AI one specific job.</strong> This starts in week 2 (typing HTML by hand because the assignment asked for it) and becomes a deliberate habit by week 6 onward, write the discount function or the streak logic myself, then hand AI a narrower extension I can actually check against something I already understand.</p>
+      <p><strong>The real debugging happens on the deployed site, not in the editor.</strong> Three of the sharpest lessons in these logs, the week 6 streak bugs, the week 8 <code>[hidden]</code> override, and the week 10 bar chart, weren't caught by reading code. They were caught by using the live app and noticing something looked wrong, then working backward.</p>
+      <p><strong>The same lesson can need a second pass.</strong> Week 8 taught that a key needs a server to stay genuinely secret. Week 10 required learning the more specific, less intuitive corollary: on a static site with no server option at all, the "safe" answer from week 8 actively breaks the app, and the key has to be committed instead. Same topic, sharper judgment the second time around, not a contradiction.</p>
+    </div>
+  </section>
+
+  <footer>
+    Built from logs/wk01.md&ndash;wk10.md in this repo. OIM3690, Summer 2026.
+  </footer>
+
+</main>
+</body>
+</html>
